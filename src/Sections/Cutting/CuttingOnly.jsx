@@ -105,7 +105,7 @@ function CuttingOnly({ ChangeStep, setPath }) {
       const volume = Math.PI * radius ** 2 * parseFloat(packageData.height);
 
       // Find the selected tree type details
-      const type_details = types.filter((t) => t.id === packageData.type);
+      const type_details = types.filter((t) => t._id === packageData.type);
 
       // Calculate the subtotal based on the tree type's cube price and volume
       let subtotal = volume * type_details[0].cube_price;
@@ -132,11 +132,26 @@ function CuttingOnly({ ChangeStep, setPath }) {
   };
 
   // Function to proceed to checkout if charges are calculated
-  const CheckOut = () => {
+  const CheckOut = async() => {
     if (charges) {
       // Save the package data to localStorage and navigate to the checkout page
       localStorage.setItem("package", JSON.stringify(packageData));
-      navigate("/cutting/checkout");
+      try {
+        const body = {
+          cutting_type: "cutting_only",
+          tree_type_id: packageData.type,
+          circumference: packageData.circumference,
+          height: packageData.height,
+          volume: packageData.volume,
+          subtotal: packageData.subtotal,
+          total: packageData.total,
+        }
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/cutting-order`, body)
+        // localStorage.removeItem("package");
+        navigate("/cutting/checkout");
+      } catch (error) {
+        console.log(error)
+      }
     } else {
       error("Fill the Inputs");
     }
@@ -180,7 +195,7 @@ function CuttingOnly({ ChangeStep, setPath }) {
                       // Update the package data with the selected tree type
                       setPackageData({
                         ...packageData,
-                        type: parseInt(event.target.value),
+                        type: event.target.value,
                       });
                     }}
                   >
@@ -188,9 +203,9 @@ function CuttingOnly({ ChangeStep, setPath }) {
                     {types.map((type, index) => {
                       return (
                         <option
-                          value={type.id}
+                          value={type._id}
                           key={index}
-                          selected={packageData.type === type.id ? true : false}
+                          // selected={packageData.type === type.id ? true : false}
                         >
                           {type.type}
                         </option>

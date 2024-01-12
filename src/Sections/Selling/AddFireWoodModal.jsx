@@ -30,14 +30,14 @@ function AddFireWoodModal({ show, AddFireWoodModalClose, AddFireWood }) {
 
   const SelectFireWood = (value) => {
     const selectedFireWood = FireWoods.find(
-      (FireWood) => FireWood.id === parseInt(value)
+      (FireWood) => FireWood._id === value
     );
 
     if (selectedFireWood) {
       setFireWood(selectedFireWood);
       setFireWoodOrderItem({
         ...FireWoodOrderitem,
-        id: selectedFireWood.id,
+        id: selectedFireWood._id,
         name: selectedFireWood.name,
       });
       setErrors({
@@ -149,7 +149,7 @@ function AddFireWoodModal({ show, AddFireWoodModalClose, AddFireWood }) {
                 {FireWoods.map((FireWood, FireWoodIndex) => {
                   return (
                     <>
-                      <option value={FireWood.id} key={FireWoodIndex}>
+                      <option value={FireWood._id} key={FireWoodIndex}>
                         {FireWood.name}
                       </option>
                     </>

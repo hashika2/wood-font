@@ -68,7 +68,7 @@ function Buying() {
       const cylinderVolume =
         Math.PI * radius ** 2 * parseFloat(buywoodData.height);
       const type_details = woodTypes.filter(
-        (t) => t.id === buywoodData.wood_type
+        (t) => t._id === buywoodData.wood_type
       );
 
       let total = cylinderVolume * type_details[0].price;
@@ -83,11 +83,25 @@ function Buying() {
     }
   };
 
-  const CheckOut = () => {
+  const CheckOut = async() => {
     if (charges) {
       // Save the package data to localStorage and navigate to the checkout page
       localStorage.setItem("buywood", JSON.stringify(buywoodData));
-      navigate("/buying/checkout");
+      try {
+        const body = {
+          buy_wood_type_id: buywoodData.wood_type,
+          circumference: buywoodData.circumference,
+          height: buywoodData.height,
+          volume: buywoodData.volume,
+          total: buywoodData.total,
+        }
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/buying-order`, body)
+        // localStorage.removeItem("package");
+        navigate("/buying/checkout");
+      } catch (error) {
+        console.log(error)
+      }
+     
     } else {
       error("Fill the Inputs");
     }
@@ -117,7 +131,7 @@ function Buying() {
                         // Update the package data with the selected tree type
                         setBuyWoodData({
                           ...buywoodData,
-                          wood_type: parseInt(event.target.value),
+                          wood_type: event.target.value,
                         });
                       }}
                     >
@@ -125,7 +139,7 @@ function Buying() {
                       {woodTypes.map((type, typeIndex) => {
                         return (
                           <>
-                            <option value={type.id} key={typeIndex}>
+                            <option value={type._id} key={typeIndex}>
                               {type.name} - Rs.{type.price}.00
                             </option>
                           </>

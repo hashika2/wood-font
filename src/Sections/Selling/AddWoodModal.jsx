@@ -29,13 +29,13 @@ function AddWoodModal({ show, AddWoodModalClose, AddWood }) {
   const [errors, setErrors] = useState({});
 
   const SelectWood = (value) => {
-    const selectedWood = woods.find((wood) => wood.id === parseInt(value));
+    const selectedWood = woods.find((wood) => wood._id === value);
 
     if (selectedWood) {
       setWood(selectedWood);
       setWoodOrderItem({
         ...woodOrderitem,
-        id: selectedWood.id,
+        id: selectedWood._id,
         name: selectedWood.name,
       });
       setErrors({
@@ -64,7 +64,7 @@ function AddWoodModal({ show, AddWoodModalClose, AddWood }) {
   }, [woodOrderitem.type]);
 
   const SelectSize = (value) => {
-    const size = wood.sizes.find((s) => s.id === parseInt(value));
+    const size = wood.wood_size.find((s) => s._id === value);
 
     if (size) {
       setWoodOrderItem({
@@ -127,6 +127,7 @@ function AddWoodModal({ show, AddWoodModalClose, AddWood }) {
 
   // Function to validate form data
   const validate = (data) => {
+    console.log('ddddddddddd',  data)
     const errors = {};
     if (!data.id) {
       errors.wood = "Select the Wood";
@@ -175,7 +176,7 @@ function AddWoodModal({ show, AddWoodModalClose, AddWood }) {
                 {woods.map((wood, woodIndex) => {
                   return (
                     <>
-                      <option value={wood.id} key={woodIndex}>
+                      <option value={wood._id} key={woodIndex}>
                         {wood.name}
                       </option>
                     </>
@@ -210,7 +211,7 @@ function AddWoodModal({ show, AddWoodModalClose, AddWood }) {
                     {wood.regal_price !== null && (
                       <option value="regal">regal</option>
                     )}
-                    {wood.sizes.length > 0 && (
+                    {wood.wood_size.length > 0 && (
                       <option value="sizes">sizes</option>
                     )}
                   </select>
@@ -259,9 +260,9 @@ function AddWoodModal({ show, AddWoodModalClose, AddWood }) {
                         onChange={(e) => SelectSize(e.target.value)}
                       >
                         <option value="">Select Size</option>
-                        {wood.sizes.map((size, sizeIndex) => {
+                        {wood.wood_size.map((size, sizeIndex) => {
                           return (
-                            <option value={size.id} key={sizeIndex}>
+                            <option value={size._id} key={sizeIndex}>
                               {size.size} - (1ft) - {size.price.toFixed(2)}
                             </option>
                           );
