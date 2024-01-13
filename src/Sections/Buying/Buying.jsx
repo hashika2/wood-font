@@ -97,7 +97,7 @@ function Buying() {
         }
         const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/buying-order`, body)
         // localStorage.removeItem("package");
-        navigate("/buying/checkout");
+        navigate("/buying/checkout", { state: { id: res.data._id}});
       } catch (error) {
         console.log(error)
       }

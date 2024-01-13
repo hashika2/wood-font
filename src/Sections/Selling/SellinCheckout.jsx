@@ -42,15 +42,32 @@ function SellinCheckout({ show, CheckoutClose, data }) {
 
   console.log(data);
 
-  const Procceed = () => {
+  const Procceed = (e) => {
+    e.preventDefault()
     if (
       checkForm.name &&
       checkForm.NIC &&
       checkForm.contact_no &&
       checkForm.email
     ) {
+      const body = {
+        customer: {
+          name: checkForm.name,
+          NIC: checkForm.NIC,
+          contact_no: checkForm.contact_no,
+          address: checkForm.address,
+          email: checkForm.email
+        },
+        orderDetails: {
+          selling_type: data.selling_type,
+          selling_item: data.items,
+          sub_total: data.total,
+          transport:checkForm.transport ,
+          total: checkForm.total
+        }
+      }
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/cutting-order`, checkForm)
+        .post(`${process.env.REACT_APP_BASE_URL}/selling-order`, body)
         .then((res) => {
           localStorage.setItem(
             "success",
@@ -171,7 +188,7 @@ function SellinCheckout({ show, CheckoutClose, data }) {
               </div>
             </div>
             <div className="modal-button">
-              <button className="app-btn btn-primary">Proceed To pay</button>
+              <button className="app-btn btn-primary" onClick={Procceed}>Proceed To pay</button>
             </div>
           </form>
         </Modal.Body>

@@ -149,10 +149,12 @@ function FullPackage({ ChangeStep, setPath }) {
           volume: packageData.volume,
           subtotal: packageData.subtotal,
           total: packageData.total,
+          distance: packageData.distance,
+          transport: packageData.transportFee,
         }
         const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/cutting-order`, body)
         // localStorage.removeItem("package");
-        navigate("/cutting/checkout");
+        navigate("/cutting/checkout", { state: { id: res.data._id}});
       } catch (error) {
         console.log(error)
       }

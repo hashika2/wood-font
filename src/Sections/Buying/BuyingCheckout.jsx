@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { Fade } from "react-reveal";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "../../Layout/Header";
 function BuyingCheckout() {
   const navigate = useNavigate();
+  const location = useLocation();
   const success = (message) => {
     toast.success(message, {
       position: "top-right",
@@ -70,8 +71,15 @@ function BuyingCheckout() {
       checkForm.contact_no &&
       checkForm.email
     ) {
+      const body ={
+        name: checkForm.name,
+        NIC: checkForm.NIC,
+        contact_no: checkForm.contact_no,
+        address: checkForm.address,
+        email: checkForm.email
+    }
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/cutting-order`, checkForm)
+        .put(`${process.env.REACT_APP_BASE_URL}/buying-order/pay/${location.state.id}`, body)
         .then((res) => {
           localStorage.removeItem("package");
           localStorage.setItem(
