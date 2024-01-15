@@ -16,6 +16,7 @@ import Products from "./Sections/Products/Products";
 import Buying from "./Sections/Buying/Buying";
 import Login from "./Sections/Login";
 import Register from "./Sections/Register";
+import Contact from "./Sections/Contact";
 import BuyingCheckout from "./Sections/Buying/BuyingCheckout";
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/buying/checkout" element={<BuyingCheckout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   );
