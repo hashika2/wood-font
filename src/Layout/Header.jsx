@@ -24,7 +24,7 @@ function Header() {
               <span>About Us</span>
             </div>
             <div className="navigation-item">
-              <span>Contact Us</span>
+              <Link to="/contact" style={{textDecoration: 'none', color: 'black'}}>Contact Us</Link>
             </div>
           </div>
 
