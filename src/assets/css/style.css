@@ -557,3 +557,41 @@ body {
 .uppercase {
   text-transform: uppercase;
 }
+
+.login-container{
+  background-color: #c4b098;
+  display: flex;
+  min-height: calc(100vh - 100px)
+}
+
+.login{
+  min-width: 390px;
+  padding: 30px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.login .input-row > input {
+  width: 100%;
+}
+
+.login .input-row{
+  flex-direction: column;
+}
+.login .input-row > span{
+  width: 100%;
+}
+.login .input-row{
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.login .primary-btn{
+  width: 100%;
+}
+
+.signup{
+  color: #333;
+    display: flex;
+    margin-top: 18px;
+}
