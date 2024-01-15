@@ -18,7 +18,7 @@ function Login() {
             <input type="password" />
           </div>
           <div className="input-row margin-top">
-            <button className="primary-btn">Login in</button>
+            <button className="primary-btn">Sign in</button>
           </div>
         </div>
         <a href="" className="signup">Don't you have an Account? Please Sign up</a>
