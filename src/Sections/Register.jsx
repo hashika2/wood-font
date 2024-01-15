@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Layout/Header";
 import { Fade } from "react-reveal";
-function Login() {
+function Register() {
   return (
     <>
       <Header />
@@ -39,4 +39,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
