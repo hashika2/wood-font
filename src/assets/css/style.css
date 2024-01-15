@@ -68,7 +68,7 @@ body {
 
   flex-direction: row;
   gap: 35px;
-  width: 80%;
+  width: 100%;
   justify-content: center;
 }
 .navigation-group .navigation-item {
@@ -594,4 +594,10 @@ body {
   color: #333;
     display: flex;
     margin-top: 18px;
+}
+
+textarea{
+  border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    width: 100%;
 }

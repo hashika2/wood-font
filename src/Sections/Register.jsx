@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast, Slide } from "react-toastify";
 
-function Login() {
+function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -111,4 +111,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
