@@ -12,7 +12,7 @@ function Header() {
         <div className="navigation-bar">
           <div className="navigation-group">
             <div className="navigation-item">
-              <span>Home</span>
+            <Link to="/home" style={{textDecoration: 'none', color: 'black'}}>Home</Link>
             </div>
             <div className="navigation-item">
               <span>Services</span>
