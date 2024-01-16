@@ -212,6 +212,18 @@ body {
   background-color: #fff;
   padding: 20px;
 }
+.product_checkout_detail-box {
+  width: 80%;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.lg-mr{
+  margin-right: 15px;
+}
+.md-mr{
+  margin-right: 5px;
+}
 
 .border-box {
   border: 1px solid rgba(0, 0, 0, 0.2);

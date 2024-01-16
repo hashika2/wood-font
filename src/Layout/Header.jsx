@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./../assets/img/logo.png";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom";
 function Header() {
   return (
@@ -30,6 +31,9 @@ function Header() {
 
           <div className="user">
             <AccountCircleOutlinedIcon sx={{ fontSize: 30 }} color="#000" />
+          </div>
+          <div className="user">
+          <Link to="/products/checkout" style={{textDecoration: 'none', color: 'black'}}><ShoppingCartIcon sx={{ fontSize: 30 }} color="#000" /></Link>
           </div>
         </div>
       </section>

@@ -127,7 +127,6 @@ function AddWoodModal({ show, AddWoodModalClose, AddWood }) {
 
   // Function to validate form data
   const validate = (data) => {
-    console.log('ddddddddddd',  data)
     const errors = {};
     if (!data.id) {
       errors.wood = "Select the Wood";
