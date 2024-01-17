@@ -19,6 +19,7 @@ import Register from "./Sections/Register";
 import Contact from "./Sections/Contact";
 import BuyingCheckout from "./Sections/Buying/BuyingCheckout";
 import ProductCheckout from "./Sections/Products/ProductsCheckout";
+import Cart from "./Sections/Products/Cart";
 function App() {
   return (
     <div className="App">
@@ -33,6 +34,7 @@ function App() {
 
         <Route path="/selling" element={<Selling />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/products/checkout" element={<ProductCheckout />} />
         <Route path="/buying" element={<Buying />} />
         <Route path="/buying/checkout" element={<BuyingCheckout />} />

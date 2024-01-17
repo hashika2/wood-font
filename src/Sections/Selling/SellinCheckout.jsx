@@ -73,7 +73,7 @@ function SellinCheckout({ show, CheckoutClose, data }) {
             "success",
             "Cutting OrderSelling Order has been added succefully"
           );
-          navigate("/");
+          navigate("/home");
         })
         .catch((err) => {
           console.log(err);
@@ -84,7 +84,7 @@ function SellinCheckout({ show, CheckoutClose, data }) {
 
   const CancelOrder = () => {
     setCheckForm({});
-    navigate("/");
+    navigate("/home");
   };
   return (
     <>

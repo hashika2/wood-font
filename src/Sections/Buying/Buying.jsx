@@ -136,7 +136,7 @@ function Buying() {
                       }}
                     >
                       <option value=""> Select type</option>
-                      {woodTypes.map((type, typeIndex) => {
+                      {woodTypes?.map((type, typeIndex) => {
                         return (
                           <>
                             <option value={type._id} key={typeIndex}>

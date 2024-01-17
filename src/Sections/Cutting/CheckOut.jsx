@@ -98,7 +98,7 @@ function CheckOut({ ChangeStep }) {
             "success",
             "Cutting Order has been added succefully"
           );
-          navigate("/");
+          navigate("/home");
         })
         .catch((err) => {
           console.log(err);
@@ -109,7 +109,7 @@ function CheckOut({ ChangeStep }) {
   };
   const CancelOrder = () => {
     localStorage.removeItem("package");
-    navigate("/");
+    navigate("/home");
   };
 
   return (

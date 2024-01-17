@@ -4,7 +4,7 @@ import { Fade } from "react-reveal";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "../../Layout/Header";
-function ProductCheckout({ ChangeStep }) {
+function Cart({ ChangeStep }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [cartItem, setCartItem] = useState([])
@@ -126,74 +126,11 @@ function ProductCheckout({ ChangeStep }) {
         <div className="product_checkout_detail-box">
           <div className="border-box">
             <Fade right duration={1000} distance="50px">
-              <div className="detail-title">Checkout</div>
+              <div className="detail-title">Cart</div>
             </Fade>
             <Fade right duration={1000} distance="50px">
               <div className="checkout-box">
-                <div className="page-form ">
-                  <div className="des-title">Customer Details</div>
-                  <div className="input-row">
-                    <span className="input-title">Name</span>
-                    <input
-                      type="text"
-                      onChange={(event) => {
-                        setCheckForm({
-                          ...checkForm,
-                          name: event.target.value,
-                        });
-                      }}
-                    />
-                  </div>
-                  <div className="input-row">
-                    <span className="input-title">ID</span>
-                    <input
-                      type="text"
-                      onChange={(event) => {
-                        setCheckForm({
-                          ...checkForm,
-                          NIC: event.target.value,
-                        });
-                      }}
-                    />
-                  </div>
-                  <div className="input-row">
-                    <span className="input-title">Address</span>
-                    <input
-                      type="text"
-                      onChange={(event) => {
-                        setCheckForm({
-                          ...checkForm,
-                          address: event.target.value,
-                        });
-                      }}
-                    />
-                  </div>
-                  <div className="input-row">
-                    <span className="input-title">Contact No</span>
-                    <input
-                      type="text"
-                      onChange={(event) => {
-                        setCheckForm({
-                          ...checkForm,
-                          contact_no: event.target.value,
-                        });
-                      }}
-                    />
-                  </div>
-                  <div className="input-row">
-                    <span className="input-title">Email</span>
-                    <input
-                      type="text"
-                      onChange={(event) => {
-                        setCheckForm({
-                          ...checkForm,
-                          email: event.target.value,
-                        });
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className="checkout-details">
+                <div className="checkout-details" style={{width: "100%" , padding: '10%'}}>
                   <div className="checkout-detail-title">Order Summary</div>
                   <div className="order-details">
                     {cartItem?.map(item => {
@@ -215,29 +152,6 @@ function ProductCheckout({ ChangeStep }) {
                         
                       </div>)
                     })}
-                    {/* <div className="order-details-row">
-                      <span className="o-d-title">Product</span>
-                      <span className="o-d-dec uppercase">
-                        bed
-                      </span>
-                      <span className="o-d-title">Price</span>
-                      <span className="o-d-dec">
-                       Rs.5000
-                      </span>
-                    </div> */}
-                    {/* <div className="order-details-row">
-                      <span className="o-d-title">Volume</span>
-                      <span className="o-d-dec ">
-                        {checkForm.volume && checkForm.volume} ft<sup>3</sup>
-                      </span>
-                    </div> */}
-                    {/* <div className="order-details-row">
-                      <span className="o-d-title">Sub Total</span>
-                      <span className="o-d-dec">
-                        Rs. {checkForm.subtotal && checkForm.subtotal}
-                       
-                      </span>
-                    </div> */}
                     <div className="order-details-row">
                       
                     </div>
@@ -249,7 +163,7 @@ function ProductCheckout({ ChangeStep }) {
                       </span>
                     </div>
                     <div className="order-details-row button-column">
-                      <button onClick={() => Procceed()}>Procced To Pay</button>
+                      <button onClick={() => Procceed()}>Checkout To Pay</button>
                       <button onClick={() => CancelOrder()}>
                         {" "}
                         Cancel Order
@@ -280,4 +194,4 @@ function ProductCheckout({ ChangeStep }) {
   );
 }
 
-export default ProductCheckout;
+export default Cart;

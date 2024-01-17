@@ -86,7 +86,7 @@ function BuyingCheckout() {
             "success",
             "Cutting Order has been added succefully"
           );
-          navigate("/");
+          navigate("/home");
         })
         .catch((err) => {
           console.log(err);
@@ -97,7 +97,7 @@ function BuyingCheckout() {
   };
   const CancelOrder = () => {
     localStorage.removeItem("package");
-    navigate("/");
+    navigate("/home");
   };
 
   return (

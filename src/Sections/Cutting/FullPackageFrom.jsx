@@ -135,7 +135,7 @@ function FullPackageFrom({ ChangeStep, setPath, packageData, setPackageData }) {
                     }}
                   >
                     <option value=""> Select type</option>
-                    {types.map((type, index) => {
+                    {types?.map((type, index) => {
                       return (
                         <option value={type.id} key={index}>
                           {type.type}

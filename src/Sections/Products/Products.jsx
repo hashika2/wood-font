@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../Layout/Header";
 import bed from "./../../assets/img/bed.jpg";
 import { Fade } from "react-reveal";
 import { ToastContainer, toast, Slide } from "react-toastify";
 function Products() {
+  const [cartItems, setCartItems] = useState([])
 
   const items = [
     { image: bed, title: 'Bedroom', price: 5000 },
@@ -40,20 +41,16 @@ function Products() {
     });
   };
 
-  useEffect(() => {
-    const cartItem = []
-    localStorage.setItem("cartItem", JSON.stringify(cartItem));
-  })
-
   const handleCart = (item) => {
     let items = JSON.parse(localStorage.getItem("cartItem"));
     items.push(item)
     localStorage.setItem("cartItem", JSON.stringify(items));
+    setCartItems(items)
     success('Add to your cart')
   }
   return (
     <>
-      <Header />
+      <Header items={cartItems}/>
 
       <section className="page-container selling-container">
         <div className="title-section">
@@ -61,7 +58,7 @@ function Products() {
         </div>
         <div className="detail-box product-box">
           {
-            items.map((item) => 
+            items?.map((item) => 
               // console.log(item)
               <Fade bottom duration={1000} distance="20px">
                 <div className="product">
