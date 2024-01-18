@@ -49,7 +49,7 @@ function Login() {
         navigate("/home");
       } catch (err) {
         console.log(err.response)
-        error(err.response.data.error)
+        error(err?.response?.data?.error)
       }
   };
 

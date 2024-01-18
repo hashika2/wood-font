@@ -42,7 +42,7 @@ function Products() {
   };
 
   const handleCart = (item) => {
-    let items = JSON.parse(localStorage.getItem("cartItem"));
+    let items = localStorage.getItem("cartItem") ? JSON.parse(localStorage.getItem("cartItem")): [];
     items.push(item)
     localStorage.setItem("cartItem", JSON.stringify(items));
     setCartItems(items)
