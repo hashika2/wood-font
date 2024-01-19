@@ -3,18 +3,24 @@ import Header from "../../Layout/Header";
 import bed from "./../../assets/img/bed.jpg";
 import { Fade } from "react-reveal";
 import { ToastContainer, toast, Slide } from "react-toastify";
+import axios from "axios";
+
 function Products() {
   const [cartItems, setCartItems] = useState([])
+  const [products, setProducts] = useState([])
 
-  const items = [
-    { image: bed, title: 'Bedroom', price: 5000 },
-    { image: bed, title: 'Bedroom', price: 5000 },
-    { image: bed, title: 'Bedroom', price: 5000 },
-    { image: bed, title: 'Bedroom', price: 5000 },
-    { image: bed, title: 'Bedroom', price: 5000 },
-    { image: bed, title: 'Bedroom', price: 5000 }
-  ]
+  useEffect(() => {
+    fetchProducts()
+  },[])
 
+  const fetchProducts = async() => {
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/product`) 
+      setProducts(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const success = (message) => {
     toast.success(message, {
       position: "top-right",
@@ -58,70 +64,19 @@ function Products() {
         </div>
         <div className="detail-box product-box">
           {
-            items?.map((item) => 
-              // console.log(item)
-              <Fade bottom duration={1000} distance="20px">
+            products?.map((item) => 
+              <Fade bottom duration={1000} distance="20px" key={item._id}>
                 <div className="product">
                   <div className="product-img">
-                    <img src={item.image} alt="" />
+                    <img src={item?.image_url} alt="" />
                   </div>
-                  <div className="product-title">{item.title}</div>
-                  <div className="product-price">{item.price}</div>
+                  <div className="product-title">{item?.title}</div>
+                  <div className="product-price">Rs. {item?.price}</div>
                   <button className="main-btn add-to-cart-btn" onClick={() => handleCart(item)}>Add To Cart</button>
                 </div>
               </Fade>
             )
           }
-          {/* <Fade bottom duration={1000} distance="20px">
-            <div className="product">
-              <div className="product-img">
-                <img src={bed} alt="" />
-              </div>
-              <div className="product-title">Bedroom</div>
-              <div className="product-price">Rs. 5000.00</div>
-              <button className="main-btn add-to-cart-btn">Add To Cart</button>
-            </div>
-          </Fade>
-          <Fade bottom duration={1000} distance="20px">
-            <div className="product">
-              <div className="product-img">
-                <img src={bed} alt="" />
-              </div>
-              <div className="product-title">Bedroom</div>
-              <div className="product-price">Rs. 5000.00</div>
-              <button className="main-btn add-to-cart-btn">Add To Cart</button>
-            </div>
-          </Fade>
-          <Fade bottom duration={1000} distance="20px">
-            <div className="product">
-              <div className="product-img">
-                <img src={bed} alt="" />
-              </div>
-              <div className="product-title">Bedroom</div>
-              <div className="product-price">Rs. 5000.00</div>
-              <button className="main-btn add-to-cart-btn">Add To Cart</button>
-            </div>
-          </Fade>
-          <Fade bottom duration={1000} distance="20px">
-            <div className="product">
-              <div className="product-img">
-                <img src={bed} alt="" />
-              </div>
-              <div className="product-title">Bedroom</div>
-              <div className="product-price">Rs. 5000.00</div>
-              <button className="main-btn add-to-cart-btn">Add To Cart</button>
-            </div>
-          </Fade>
-          <Fade bottom duration={1000} distance="20px">
-            <div className="product">
-              <div className="product-img">
-                <img src={bed} alt="" />
-              </div>
-              <div className="product-title">Bedroom</div>
-              <div className="product-price">Rs. 5000.00</div>
-              <button className="main-btn add-to-cart-btn">Add To Cart</button>
-            </div>
-          </Fade> */}
         </div>
       </section>
       <ToastContainer
