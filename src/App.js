@@ -6,6 +6,7 @@ import "./assets/css/selling.css";
 import "./assets/css/modal.css";
 import "./assets/css/products.css";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, Slide } from "react-toastify";
 
 import FullPackage from "./Sections/Cutting/FullPackage";
 import CheckOut from "./Sections/Cutting/CheckOut";
@@ -20,9 +21,23 @@ import Contact from "./Sections/Contact";
 import BuyingCheckout from "./Sections/Buying/BuyingCheckout";
 import ProductCheckout from "./Sections/Products/ProductsCheckout";
 import Cart from "./Sections/Products/Cart";
+import PostProduct from "./Sections/Products/PostProduct";
 function App() {
   return (
     <div className="App">
+     <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Slide}
+      />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -39,6 +54,7 @@ function App() {
         <Route path="/buying" element={<Buying />} />
         <Route path="/buying/checkout" element={<BuyingCheckout />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin/product" element={<PostProduct />} />
       </Routes>
     </div>
   );
